@@ -9,7 +9,7 @@
 // Macros are provided for tone functions that are aliases
 // of sound functions.
 
-#define LOWEST_FREQ 20U // Hz
+#define LOWEST_FREQ 20U // Hz 
 
 #define tone_stop() sound_stop()
 #define tone_busy() sound_busy()
