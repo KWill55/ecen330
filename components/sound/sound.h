@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stdint.h>
  
-#define MAX_VOL 100U
+#define MAX_VOL 100U 
 
 // Initialize the sound driver. Must be called before using sound.
 // May be called again to change sample rate.

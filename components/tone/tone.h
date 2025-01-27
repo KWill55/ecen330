@@ -8,7 +8,7 @@
 // sound component to play out cyclically until told to stop.
 // Macros are provided for tone functions that are aliases
 // of sound functions.
-
+ 
 #define LOWEST_FREQ 20U // Hz 
 
 #define tone_stop() sound_stop()

@@ -25,14 +25,13 @@ typedef enum {
 // This enum is used to identify the type of missile.
 typedef enum {
 	MISSILE_TYPE_PLAYER,
-	MISSILE_TYPE_ENEMY,
-	MISSILE_TYPE_PLANE
+	MISSILE_TYPE_ENEMY
 } missile_type_t;
 
 // This struct contains all information about a missile.
 typedef struct {
 
-	// Missile type (player, enemy, enemy plane).
+	// Missile type (player, enemy).
 	missile_type_t type;
 
 	// Current state. The 'enum' is defined in your missile.c file.
@@ -74,22 +73,17 @@ void missile_init_idle(missile_t *missile);
 // destination of the missile (as specified by the user). The origin is the
 // closest "firing location" to the destination (there are three firing
 // locations evenly spaced along the bottom of the screen).
-void missile_init_player(missile_t *missile, coord_t x_dest, coord_t y_dest);
+void missile_init_player(missile_t *missile, coord_t x_current, coord_t y_current, coord_t x_dest, coord_t y_dest);
 
 // Initialize the missile as an enemy missile. This will randomly choose the
 // origin and destination of the missile. The origin is somewhere near the
 // top of the screen, and the destination is the very bottom of the screen.
 void missile_init_enemy(missile_t *missile);
 
-// Initialize the missile as a plane missile. This function takes the (x, y)
-// location of the plane as an argument and uses it as the missile origin.
-// The destination is randomly chosen along the bottom of the screen.
-void missile_init_plane(missile_t *missile, coord_t x_orig, coord_t y_orig);
-
 /******************** Missile Control & Tick Functions ********************/
 
 // Used to indicate that a moving missile should be detonated. This occurs
-// when an enemy or a plane missile is located within an explosion zone.
+// when an enemy missile is located within an explosion zone.
 void missile_explode(missile_t *missile);
 
 // Tick the state machine for a single missile.
@@ -116,7 +110,7 @@ bool missile_is_idle(missile_t *missile);
 // Return whether the given missile is impacted.
 bool missile_is_impacted(missile_t *missile);
 
-// Return whether an object (e.g., missile or plane) at the specified
+// Return whether an object (missile) at the specified
 // (x,y) position is colliding with the given missile. For a collision
 // to occur, the missile needs to be exploding and the specified
 // position needs to be within the explosion radius.

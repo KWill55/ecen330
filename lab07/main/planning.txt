@@ -1,0 +1,53 @@
+TASK LIST
+1. create game environement (background, walls, enemies, spawn zones, tank unmoving)
+2. get tank to move 
+3. get tank to not be able to go through walls 
+4. fire missiles in the right direction
+5. make missiles explode when they hit walls and enemies 
+6. make enemies explode when hit 
+7. stats 
+
+
+main
+    * initizialize esp buttons, etc 
+    * call game control tick 
+
+gamecontrol
+    * display stats 
+    * game control init 
+        * set up map (walls (random or no?) )
+    * game control tick 
+        * checks player or enemies exploding
+        * tank tick (movement, firing, etc)
+
+tank 
+    * tank state machine
+        * TANK_STATE_INIT - spawn tank in center of map 
+        * TANK_STATE_MOVING - move the tank and fire if button is pressed
+        * TANK_STATE_DEAD //if time
+
+missile
+    * player missile state machine
+        * MISSILE_STATE_INIT - spawn a missile 
+        * MISSILE_STATE_MOVING - move the missile in the direction it was fired 
+        * MISSILE_STATE_EXPLODE_GROW - grow missile 
+        * MISSILE_STATE_EXPLODE_SHRINK - shrink missile 
+        * MISSILE_STATE_IDLE - if player hasn't launched missile yet or if it exploded; wait for another shot
+
+enemy //currently just a box to be shot
+    * enemy state machine
+        * ENEMY_STATE_INIT - select random spot to spawn out of the predesigned spawn areas
+        * ENEMY_STATE_IDLE - wait to be shot at
+        * ENEMY_STATE_DEAD - delete enemy and set back to init
+config
+    * definitions
+
+
+
+
+
+
+
+
+
+
